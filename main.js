@@ -1,8 +1,10 @@
+const testnum = 4
+
+console.log(fibs(testnum));
+console.log(fibsRec(testnum));
 
 
-console.log(fib(3));
-
-function fib(num){
+function fibs(num){
     if(num == 0) return [0];
 
     const arr = [0,1];
@@ -12,4 +14,14 @@ function fib(num){
         arr[i+1] = arr[i]+arr[i-1]
     }
     return arr;
+}
+
+function fibsRec(num){
+    if(num == 0) return [];
+    else if(num == 1) return [0];
+    else if(num == 2) return [0,1];
+
+    const seq = fibsRec(num-1);
+    seq.push(seq[seq.length-1] + seq[seq.length-2]);
+    return seq
 }
